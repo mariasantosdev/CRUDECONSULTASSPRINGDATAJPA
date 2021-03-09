@@ -11,6 +11,7 @@ import br.com.maria.eduarda.spring.data.orm.Cargo;
 import br.com.maria.eduarda.spring.data.repository.CargoRepository;
 import br.com.maria.eduarda.spring.data.service.CrudCargoService;
 import br.com.maria.eduarda.spring.data.service.CrudFuncionarioService;
+import br.com.maria.eduarda.spring.data.service.RelatorioFuncionarioDinamico;
 import br.com.maria.eduarda.spring.data.service.RelatorioService;
 
 @SpringBootApplication
@@ -24,11 +25,15 @@ public class ProjetoSpringDataJpaApplication implements CommandLineRunner{
 	
 	private final RelatorioService relatorioService;
 	
+	private final RelatorioFuncionarioDinamico relatorioFuncionarioDinamico;
+	
 	public ProjetoSpringDataJpaApplication(CrudCargoService cargoService,
-			CrudFuncionarioService funcionarioService, RelatorioService relatorioService) {
+			CrudFuncionarioService funcionarioService, RelatorioService relatorioService,
+			RelatorioFuncionarioDinamico relatorioFuncionarioDinamico ) {
 		this.cargoService = cargoService;
 		this.funcionarioService = funcionarioService;
 		this.relatorioService = relatorioService;
+		this.relatorioFuncionarioDinamico = relatorioFuncionarioDinamico;
 	} 
 	
 	
@@ -47,6 +52,7 @@ public class ProjetoSpringDataJpaApplication implements CommandLineRunner{
 			System.out.println("1 - Cargo");
 			System.out.println("2 -Funcionário");
 			System.out.println("3 - Relatório de Funcionário");
+			System.out.println("4 - Relatório de Funcionário dimanico");
 			
 			
 			int action = scanner.nextInt();
@@ -64,6 +70,11 @@ public class ProjetoSpringDataJpaApplication implements CommandLineRunner{
 			
 			if(action == 3) {
 				relatorioService.Inicial(scanner);
+				
+				
+			}
+			if(action == 4) {
+				relatorioFuncionarioDinamico.inicial(scanner);
 				
 				
 			}
